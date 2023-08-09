@@ -31,13 +31,21 @@ export function Post({ author, publishedAt, content }) {
 
   function handleCreateNewComment(e) {
     e.preventDefault()
-    
+
     setComments([...comments, newCommentText])
     setNewCommentText('')
   }
 
   function handleNewCommentChange(e) {
     setNewCommentText(e.target.value)
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete
+    })
+
+    setComments(commentsWithoutDeletedOne)
   }
 
   return (
@@ -81,7 +89,13 @@ export function Post({ author, publishedAt, content }) {
 
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment key={comment} content={comment}/>
+          return (
+            <Comment 
+              key={comment} 
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          )
         })}
       </div>
     </article>
