@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "gcrozariol-app"
+  },
+  "targets": {
+    "gcrozariol-app": {
+      "hosting": {
+        "feed": [
+          "gcrozariol-feed"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
